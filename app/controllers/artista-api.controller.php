@@ -19,3 +19,15 @@ class ArtistaApiController {
         }
         return $res->json($artistas, 200);
     }
+
+     public function getArtistaById($req, $res) {
+      $id_artista = $req->params->id;
+      $artista = $this->model->get($id_artista);
+       if (!$artista) {
+            return $res->json(
+                "El artista con id=$id_artista no existe",
+                404
+            );
+        }
+        return $res->json($artista, 200);
+    }
