@@ -25,7 +25,7 @@ class AlbumApiController {
         $genero = $req->body->genero ?? null;
         $fecha_lanzamiento = $req->body->fecha_lanzamiento ?? null;
         $duracion_minutos = $req->body->duracion_minutos ?? null;
-        $cantidad_canciones = $req->body->cantidas_canciones ?? null;
+        $cantidad_canciones = $req->body->cantidad_canciones ?? null;
         $imagen = $req->body->imagen ?? null;
         $id_artista = $req->body->id_artista ?? null;    
 
@@ -36,6 +36,18 @@ class AlbumApiController {
         $this->model->update($id_album, $nombre_album, $genero, $fecha_lanzamiento, $duracion_minutos, $cantidad_canciones, $imagen, $id_artista);
         
         $album = $this->model->get($id_album);
+        return $res->json($album, 200);
+    }
+
+   public function getAlbumById($req, $res) {
+      $id_album = $req->params->id;
+      $album = $this->model->get($id_album);
+       if (!$album) {
+            return $res->json(
+                "El album con id=$id_album no existe",
+                404
+            );
+        }
         return $res->json($album, 200);
     }
 
