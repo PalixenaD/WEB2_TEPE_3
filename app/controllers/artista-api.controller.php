@@ -31,3 +31,41 @@ class ArtistaApiController {
         }
         return $res->json($artista, 200);
     }
+
+
+    public function insertArtista($req, $res) {
+
+        $nombre = $req->body->nombre_artista ?? null;
+        $fecha_nacacimiento = $req->body->fecha_nacimiento ?? null;
+        $fecha_fallecimiento = $req->body->fecha_fallecimiento ?? null;
+        $origen = $req->body->lugar_origen ?? null;
+        $imagen = $req->body->imagen ?? null;
+
+        if ( empty($nombre) || empty($fecha_nacimiento) || empty($origen)){
+            return $res->json(
+                "Faltan completar datos",
+                400
+            );
+        }
+
+        $id = $this->model->insert(
+            $nombre,
+            $fecha_nacimiento,
+            $fecha_fallecimiento,
+            $origen,
+            $imagen
+        );
+
+        if (!$id) {
+            return $res->json(
+                "Error al insertar",
+                500
+            );
+        }
+
+        $artista = $this->model->get($id);
+
+        return $res->json($artista, 201);
+    }
+    
+    
