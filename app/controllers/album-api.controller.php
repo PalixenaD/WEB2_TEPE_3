@@ -1,1 +1,41 @@
-...
+<?php
+require_once __DIR__ . '/../models/albumes-api.model.php';
+
+class AlbumApiController {
+  private $model;
+
+  public function  __construct() {
+        $this->model = new AlbumModel();
+    }
+
+  public function getAlbums($req, $res) {
+    $albums = $this->model->getAll();
+    return $res->json($albums, 200);
+}
+
+  public function updateAlbum($req, $res) {
+    $id_album = $req->params->id;
+        $album = $this->model->get($id_album);
+
+        if (!$album) {
+            return $res->json("El album con el id=$id_album no existe", 404);
+        }
+
+        $nombre_album = $req->body->nombre_album ?? null;
+        $genero = $req->body->genero ?? null;
+        $fecha_lanzamiento = $req->body->fecha_lanzamiento ?? null;
+        $duracion_minutos = $req->body->duracion_minutos ?? null;
+        $cantidad_canciones = $req->body->cantidas_canciones ?? null;
+        $imagen = $req->body->imagen ?? null;
+        $id_artista = $req->body->id_artista ?? null;    
+
+        if (empty($nombre_album) || empty($genero) || empty($fecha_lanzamiento) || empty($duracion_minutos) || empty($cantidad_canciones) || empty($imagen) || empty($id_artista)) {
+            return $res->json('Falta completar datos', 400);
+        }
+
+        $this->model->update($id_album, $nombre_album, $genero, $fecha_lanzamiento, $duracion_minutos, $cantidad_canciones, $imagen, $id_artista);
+        
+        $album = $this->model->get($id_album);
+        return $res->json($album, 200);
+    }
+
