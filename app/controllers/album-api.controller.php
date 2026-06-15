@@ -51,3 +51,39 @@ class AlbumApiController {
         return $res->json($album, 200);
     }
 
+  public function insertAlbum($req, $res) {
+
+        $nombre_album = $req->body->nombre_album ?? null;
+        $genero = $req->body->genero?? null;
+        $fecha_lanzamiento = $req->body->fecha_lanzamiento ?? null;
+        $durancio_minutos = $req->body->duracion_minutos ?? null;
+        $cantidad_canciones = $req->body->cantidad_canciones ?? null;
+        $imagen = $req->body->imagen ?? null;
+        $id_artista = $req->body->id_artista ?? null;
+
+        if (empty($nombre_album) || empty($genero) || empty($fecha_lanzamiento) || empty($duracion_minutos) || empty($cantidad_canciones) || empty($imagen) || empty($id_artista)) {
+            return $res->json('Falta completar datos', 400);
+        }
+        }
+
+        $id = $this->model->insert(
+            $nombre_album,
+            $genero,
+            $fecha_lanzamiento,
+            $duracion_minutos,
+            $cantidad_camciones,
+            $imagen,
+            $id_artista
+        );
+
+        if (!$id) {
+            return $res->json(
+                "Error al insertar",
+                500
+            );
+        }
+
+        $album = $this->model->get($id);
+
+        return $res->json($album, 201);
+    }
