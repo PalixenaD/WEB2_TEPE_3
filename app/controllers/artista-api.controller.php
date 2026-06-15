@@ -10,3 +10,12 @@ class ArtistaApiController {
         $this->model = new ArtistaModel();
     }
 
+     public function getArtistas ($req, $res) {
+        $status = $req->query->status ?? null;
+     if ($status) {
+         $artistas = $this->model->getAllByStatus($status);
+        } else {
+            $artistas = $this->model->getAll();
+        }
+        return $res->json($artistas, 200);
+    }
