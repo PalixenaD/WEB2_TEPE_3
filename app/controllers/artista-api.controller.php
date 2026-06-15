@@ -10,15 +10,6 @@ class ArtistaApiController {
         $this->model = new ArtistaModel();
     }
 
-     public function getArtistas ($req, $res) {
-        $status = $req->query->status ?? null;
-     if ($status) {
-         $artistas = $this->model->getAllByStatus($status);
-        } else {
-            $artistas = $this->model->getAll();
-        }
-        return $res->json($artistas, 200);
-    }
 
      public function getArtistaById($req, $res) {
       $id_artista = $req->params->id;
@@ -67,5 +58,41 @@ class ArtistaApiController {
 
         return $res->json($artista, 201);
     }
+
+
+    public function patchArtista($req, $res) {
+
+    $id_artista = $req->params->id;
+
+    $artista = $this->model->get($id_artista);
+
+    if (!$artista) {
+        return $res->json(
+            "El artista con id=$id_artista no existe",
+            404
+        );
+    }
+    $nombre = $req->body->nombre_artista ?? $artista->nombre_artista;
+    $fecha_nacimiento = $req->body->fecha_nacimiento ?? $artista->fecha_nacimiento;
+    $fecha_fallecimiento = $req->body->fecha_fallecimiento ?? $artista->fecha_fallecimiento;
+    $origen = $req->body->lugar_origen ?? $artista->lugar_origen;
+    $imagen = $req->body->imagen ?? $artista->imagen;
+
+    $this->model->update(
+        $id_artista,
+        $nombre,
+        $fecha_nacimiento,
+        $fecha_fallecimiento,
+        $origen,
+        $imagen
+    );
+
+    $artistaActualizado = $this->model->get($id_artista);
+
+    return $res->json(
+        $artistaActualizado,
+        200
+    );
+}
     
     
