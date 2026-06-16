@@ -19,7 +19,7 @@ class ReseñaApiController {
         $id_album = $req->body->id_album ?? null;
        
 
-        if ( empty($comentario) || empty($puntuacion) || empty($id_album)){
+        if ( empty($comentario) || empty($id_album)){
             return $res->json(
                 "Faltan completar datos",
                 400
