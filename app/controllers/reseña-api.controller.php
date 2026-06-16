@@ -10,8 +10,11 @@ class ReseñaApiController {
         $this->model = new ReseñaModel();
     }
 
+    public function getReseñas($req, $res) {
+    $reseñas = $this->model->getAll();
+    return $res->json($reseñas, 200);
+}
 
-    
     public function insertReseña($req, $res) {
 
         $comentario = $req->body->comentario ?? null;
