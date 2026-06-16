@@ -15,7 +15,7 @@ $router->addRoute('albums/:id', 'PUT', 'AlbumApiController', 'updateAlbum');
 
 
 //ARTISTA
-$router->addRoute('albums/:id/reseñas', 'GET', 'ReseñaApiController', 'getReseñasByAlbum');
+$router->addRoute('reseñas', 'GET', 'ReseñaApiController', 'getReseñas');
 $router->addRoute('reseñas', 'POST', 'ReseñaApiController', 'insertReseña');
 
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
