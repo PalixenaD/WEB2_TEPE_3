@@ -11,7 +11,7 @@ class AlbumModel {
         $query = $this->db->prepare('SELECT al.*, ar.nombre_artista AS Artista
                                         FROM album al
                                         JOIN artista ar ON al.id_artista = ar.id_artista
-                                        ORDER BY ? ?');
+                                        ORDER BY $sort $order');
         $query->execute();
         $albumes = $query->fetchAll(PDO::FETCH_OBJ);
         return $albumes;
