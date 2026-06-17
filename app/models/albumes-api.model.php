@@ -7,10 +7,11 @@ class AlbumModel {
         $this->db = new PDO('mysql:host=localhost;dbname=tpe_web2;charset=utf8', 'root', '');
     }
 
-    public function getAll() {
+    public function getAll($sort, $order) {
         $query = $this->db->prepare('SELECT al.*, ar.nombre_artista AS Artista
                                         FROM album al
-                                        JOIN artista ar ON al.id_artista = ar.id_artista');
+                                        JOIN artista ar ON al.id_artista = ar.id_artista
+                                        ORDER BY ? ?');
         $query->execute();
         $albumes = $query->fetchAll(PDO::FETCH_OBJ);
         return $albumes;
