@@ -46,7 +46,7 @@ class ReseñaApiController {
 
         return $res->json($reseña, 201);
     }
-
+};
 
   
     
