@@ -6,14 +6,12 @@ require_once 'app/controllers/reseña-api.controller.php';
 
 $router = new Router();
 
-// ALBUMES
 $router->addRoute('albums', 'GET', 'AlbumApiController', 'getAlbums');
 $router->addRoute('albums/:id', 'GET', 'AlbumApiController', 'getAlbumById');
 $router->addRoute('albums', 'POST', 'AlbumApiController', 'insertAlbum');
 $router->addRoute('albums/:id', 'PUT', 'AlbumApiController', 'updateAlbum');
 
 
-//ARTISTA
 $router->addRoute('reseñas', 'GET', 'ReseñaApiController', 'getReseñas');
 $router->addRoute('reseñas', 'POST', 'ReseñaApiController', 'insertReseña');
 
