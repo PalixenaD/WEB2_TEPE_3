@@ -34,9 +34,8 @@ class AlbumApiController {
 
     if ($order != 'asc' && $order != 'desc')
     $order = 'asc';
-
-    //paginadoooo 
-     $page = $_GET['page'] ?? null;
+ 
+    $page = $_GET['page'] ?? null;
    
     if ($page) {
      if ($page < 1) {
