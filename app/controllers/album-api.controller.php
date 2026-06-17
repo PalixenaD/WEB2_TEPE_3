@@ -9,7 +9,26 @@ class AlbumApiController {
     }
 
   public function getAlbums($req, $res) {
-    $albums = $this->model->getAll();
+    $sort = $_GET['sort'] ?? 'nombre_album';
+    $order = $_GET['order'] ?? 'asc';
+
+    $allowedSorts = [
+    'id_album',
+    'nombre_album',
+    'genero',
+    'fecha_lanzamiento',
+    'duracion_minutos',
+    'cantidad_canciones',
+    'id_artista'
+];
+
+    if (!in_array($sort, $allowedSorts))
+    $sort = 'nombre_album';
+
+    if ($order != 'asc' && $order != 'desc')
+    $order = 'asc';
+    
+    $albums = $this->model->getAll($sort, $order);
     return $res->json($albums, 200);
 }
 
@@ -56,7 +75,7 @@ class AlbumApiController {
         $nombre_album = $req->body->nombre_album ?? null;
         $genero = $req->body->genero?? null;
         $fecha_lanzamiento = $req->body->fecha_lanzamiento ?? null;
-        $durancio_minutos = $req->body->duracion_minutos ?? null;
+        $duracion_minutos = $req->body->duracion_minutos ?? null;
         $cantidad_canciones = $req->body->cantidad_canciones ?? null;
         $imagen = $req->body->imagen ?? null;
         $id_artista = $req->body->id_artista ?? null;
@@ -64,14 +83,14 @@ class AlbumApiController {
         if (empty($nombre_album) || empty($genero) || empty($fecha_lanzamiento) || empty($duracion_minutos) || empty($cantidad_canciones) || empty($imagen) || empty($id_artista)) {
             return $res->json('Falta completar datos', 400);
         }
-        }
+        
 
         $id = $this->model->insert(
             $nombre_album,
             $genero,
             $fecha_lanzamiento,
             $duracion_minutos,
-            $cantidad_camciones,
+            $cantidad_canciones,
             $imagen,
             $id_artista
         );
@@ -87,3 +106,4 @@ class AlbumApiController {
 
         return $res->json($album, 201);
     }
+}
