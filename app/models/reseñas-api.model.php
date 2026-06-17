@@ -13,7 +13,13 @@ class ReseñaModel {
         $reseña = $query->fetchAll(PDO::FETCH_OBJ);
         return $reseña;
     }
-    
+
+    public function get($id) {
+        $query = $this->db->prepare('SELECT * FROM reseña WHERE id_reseña = ?');
+        $query->execute([$id]);
+        $reseña = $query->fetch(PDO::FETCH_OBJ);
+        return $reseña;
+    }
 
     public function insert($comentario, $puntuacion, $id_album) {
         $query = $this->db->prepare('INSERT INTO `reseña`(`comentario`, `puntuacion`, `id_album`) VALUES (?,?,?)');
