@@ -9,7 +9,6 @@ $router = new Router();
 // ALBUMES
 $router->addRoute('albums', 'GET', 'AlbumApiController', 'getAlbums');
 $router->addRoute('albums/:id', 'GET', 'AlbumApiController', 'getAlbumById');
-$router->addRoute('albums/:id', 'DELETE', 'AlbumApiController', 'removeAlbum');
 $router->addRoute('albums', 'POST', 'AlbumApiController', 'insertAlbum');
 $router->addRoute('albums/:id', 'PUT', 'AlbumApiController', 'updateAlbum');
 
