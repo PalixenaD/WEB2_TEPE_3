@@ -9,6 +9,13 @@ class AlbumApiController {
     }
 
   public function getAlbums($req, $res) {
+
+      $genero = $_GET['genero'] ?? null;
+     if($genero){
+      $albums = $this->model->getByGenero($genero);
+      return $res->json($album,200);
+     }
+    
     $sort = $_GET['sort'] ?? 'nombre_album';
     $order = $_GET['order'] ?? 'asc';
 
