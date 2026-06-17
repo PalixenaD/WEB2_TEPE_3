@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../models/reseña-api.model.php';
+require_once __DIR__ . '/../models/reseñas-api.model.php';
 
 class ReseñaApiController {
 
