@@ -27,10 +27,30 @@ class AlbumApiController {
 
     if ($order != 'asc' && $order != 'desc')
     $order = 'asc';
-    
-    $albums = $this->model->getAll($sort, $order);
+
+    //paginadoooo 
+     $page = $_GET['page'] ?? null;
+   
+    if ($page) {
+     if ($page < 1) {
+       return $res->json('El parametro page debe ser mayor a 0',  400 );
+        }
+
+        $limit = 5;
+        $offset = ($page - 1) * $limit;
+        $albums = $this->model->getAllPaginado(
+            $sort,
+            $order,
+            $limit,
+            $offset );
+
+     } else { $albums = $this->model->getAll(
+            $sort,
+            $order );
+    }
     return $res->json($albums, 200);
 }
+    
 
   public function updateAlbum($req, $res) {
     $id_album = $req->params->id;
