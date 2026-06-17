@@ -17,6 +17,23 @@ class AlbumModel {
         return $albumes;
     }
 
+   public function getAllPaginado($sort, $order, $limit, $offset) {
+
+    $query = $this->db->prepare( "SELECT al.*, ar.nombre_artista AS Artista
+                                 FROM album al
+                                 JOIN artista ar ON al.id_artista = ar.id_artista
+                                 ORDER BY $sort $order
+                                LIMIT ? OFFSET ?");
+
+    $query->bindValue(1, $limit, PDO::PARAM_INT);
+    $query->bindValue(2, $offset, PDO::PARAM_INT);
+
+    $query->execute();
+   $albumes = $query->fetchAll(PDO::FETCH_OBJ);
+   return $albumes;
+}
+
+    
     public function get($id) {
         $query = $this->db->prepare('SELECT al.*, ar.nombre_artista AS Artista
                                             FROM album al
