@@ -32,7 +32,16 @@ class AlbumModel {
    $albumes = $query->fetchAll(PDO::FETCH_OBJ);
    return $albumes;
 }
+    
+ public function getByGenero($genero) {
+  $query = $this->db->prepare( 'SELECT al.*, ar.nombre_artista AS Artista
+                              FROM album al
+                             JOIN artista ar ON al.id_artista = ar.id_artista
+                              WHERE al.genero = ?');
 
+    $query->execute([$genero]);
+     return $query->fetchAll(PDO::FETCH_OBJ);
+}
     
     public function get($id) {
         $query = $this->db->prepare('SELECT al.*, ar.nombre_artista AS Artista
