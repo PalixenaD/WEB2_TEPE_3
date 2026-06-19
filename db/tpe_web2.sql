@@ -48,15 +48,13 @@ INSERT INTO `album` (`id_album`, `nombre_album`, `genero`, `fecha_lanzamiento`, 
 (3, 'Keep The Faith', 'Rock', '1992-11-03', 65, 12, 'https://i.scdn.co/image/ab67616d0000b27359bfe048568a969c6f0bd08c', 2),
 (4, 'Slippery When Wet', 'Hard Rock', '1986-08-18', 43, 10, 'https://i.scdn.co/image/ab67616d0000b2731336b31b6a1799f0de5807ac', 2),
 (5, 'Red', 'Country,Pop', '2012-10-22', 65, 16, 'https://static.wikia.nocookie.net/taylorswift/images/7/70/Red_-_Portada_oficial.jpg/revision/latest?cb=20181127032635&path-prefix=es', 3),
-(6, '1989', 'Pop', '2026-05-08', 44, 12, 'foto.jpg', 3),
+(6, '1989', 'Pop', '2014-10-27', 48, 13, 'foto.jpg', 3),
 (7, 'Blizzard Of Ozz', 'Metal', '1980-09-12', 93, 19, 'https://i.scdn.co/image/ab67616d0000b273ed5c19fd9206d2d7e73c140c', 4),
 (8, 'Diary Of A Madman', 'Metal', '1981-11-07', 53, 10, 'https://cdn-p.smehost.net/sites/36a287df83ae4bd5bbf9a5628b66a36c/wp-content/uploads/2020/04/1500x1500bb-7-1024x1024.jpeg', 4),
 (9, 'Future Nostalgia', 'Pop', '2020-03-27', 43, 13, 'https://i.scdn.co/image/ab67616d0000b2735ffd3856144e0414dea4b838', 5),
 (10, 'Radical Optimism', 'Pop', '2024-05-03', 36, 11, 'https://upload.wikimedia.org/wikipedia/en/f/fa/Dua_Lipa_-_Radical_Optimism.png', 5),
 (11, 'Rebel Yell', 'Rock', '1983-11-10', 38, 9, 'https://i.scdn.co/image/ab67616d0000b273ea07dca8b4ca808c1e5b17fb', 6),
-(12, 'CyberPunk', 'Rock', '1993-06-29', 71, 20, 'https://i.scdn.co/image/ab67616d00001e029290a5f1a7e0e3e9ddb11073', 6),
-(18, 'Horizon', 'Pop', '2026-05-08', 43, 12, 'b', 11),
-(19, 'Horizon', 'Pop', '2026-05-08', 43, 12, 'foto.jpg', 1);
+(12, 'CyberPunk', 'Rock', '1993-06-29', 71, 20, 'https://i.scdn.co/image/ab67616d00001e029290a5f1a7e0e3e9ddb11073', 6);
 
 -- --------------------------------------------------------
 
@@ -83,8 +81,7 @@ INSERT INTO `artista` (`id_artista`, `nombre_artista`, `fecha_nacimiento`, `fech
 (3, 'Taylor Swift', '1989-12-13', NULL, 'Pensilvania, EE.UU', 'https://media.vogue.mx/photos/5c072934cac6a8dedd25dc2b/master/w_1600%2Cc_limit/la_magia_del_rosa_748052830.jpg'),
 (4, 'Ozzy Osbourne', '1948-12-03', '2025-07-22', 'Marston Green, Inglaterra', 'https://m.media-amazon.com/images/M/MV5BNzk3OTYyMzc2Nl5BMl5BanBnXkFtZTcwMTk3NTUyMg@@._V1_FMjpg_UX1000_.jpg'),
 (5, 'Dua Lipa', '1995-08-22', NULL, 'London, Inglaterra', 'https://elplanetaurbano.com/wp-content/uploads/2024/03/Dua-Lipa.webp'),
-(6, 'Billy Idol', '1955-11-30', NULL, 'Stanmore, Inglaterra', 'https://www.guioteca.com/los-80/files/2019/07/Billy-7.jpg'),
-(11, 'Joanna', '2006-01-06', NULL, 'Buenos Aires, Argentina', '');
+(6, 'Billy Idol', '1955-11-30', NULL, 'Stanmore, Inglaterra', 'https://www.guioteca.com/los-80/files/2019/07/Billy-7.jpg');
 
 -- --------------------------------------------------------
 
