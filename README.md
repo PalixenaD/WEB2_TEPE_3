@@ -1,7 +1,8 @@
 # WEB2_TEPE_3
-API REST para gestionar álbumes musicales y reseñas
+API REST para gestionar álbumes musicales y sus reseñas. Se puede obtener todos los albums y reseñas, buscar album por id, agregar album y reseña, modificar album. Hay filtrado, ordenamiento para todos los campos y paginado para la tabla ALBUM
 
 # Obtener todos los álbumes
+
 # REQUEST
 GET /api/albums
 
@@ -21,6 +22,7 @@ GET /api/albums
 ]
 
 # Obtener un álbum por ID
+
 # REQUEST
 GET /api/albums/1
 
@@ -37,6 +39,7 @@ GET /api/albums/1
   }
 
 # Agregar un álbum
+
 # Request
 
 POST /api/albums
@@ -54,6 +57,7 @@ POST /api/albums
 
 
 # Modificar un álbum
+
 # Request
 
 PUT /api/albums/1
@@ -71,6 +75,7 @@ PUT /api/albums/1
 
 
 # Filtrado
+
 # REQUEST
 
 GET /api/albums?genero=Pop
@@ -78,6 +83,7 @@ GET /api/albums?genero=Pop
 Obtiene únicamente los álbumes del género indicado. (solo disponible con genero)
 
 # Ordenamiento
+
 # REQUEST
 
 GET /api/albums?sort=nombre_album&order=asc
@@ -101,6 +107,7 @@ GET /api/albums?page=1&limit=5
 Obtiene los primeros 5 álbumes.
 
 # Obtener reseñas
+
 # Request
 
 GET /api/reseñas
@@ -117,6 +124,7 @@ GET /api/reseñas
 ]
 
 # Agregar reseña
+
 # Request
 
 POST /api/reseñas
@@ -127,7 +135,4 @@ POST /api/reseñas
     "comentario": "Un album malo.",
     "puntuacion": "1"
     "id_album": 2
-  }
-  "puntaje": 5,
-  "id_album": 1
 }
